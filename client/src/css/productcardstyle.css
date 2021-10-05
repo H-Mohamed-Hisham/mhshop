@@ -1,0 +1,14 @@
+.product-card-button-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.no-border {
+  border: none !important;
+}
+
+.product-card-image {
+  height: 200px;
+  width: 100%;
+}

@@ -1,0 +1,12 @@
+.checkoutsteps-nav {
+  top: unset !important;
+  position: unset !important;
+}
+
+.checkoutsteps-disabled-border {
+  border: 1px solid #919aa1;
+}
+
+.checkoutsteps-active-border {
+  border: 1px solid #1a1a1a;
+}

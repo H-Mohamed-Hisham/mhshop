@@ -1,0 +1,92 @@
+.order-track {
+  display: flex;
+  flex-direction: column;
+}
+.order-track-step {
+  display: flex;
+  height: 7rem;
+}
+.order-track-step:last-child {
+  overflow: hidden;
+  height: 4rem;
+}
+.order-track-step:last-child .order-track-status span:last-of-type {
+  display: none;
+}
+.order-track-status {
+  margin-right: 1.5rem;
+  position: relative;
+}
+
+/* Process Disabled */
+.order-track-status-dot-disabled {
+  display: block;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: #919aa1;
+}
+.order-track-status-line-disabled {
+  display: block;
+  margin: 0 auto;
+  width: 2px;
+  height: 7rem;
+  background: #919aa1;
+}
+
+/* Process Active */
+
+.order-track-status-dot-active {
+  display: block;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: green;
+}
+.order-track-status-line-active {
+  display: block;
+  margin: 0 auto;
+  width: 2px;
+  height: 7rem;
+  background: green;
+}
+
+.order-track-text-stat {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 3px;
+  margin-top: 2px;
+}
+.order-track-text-sub {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.order-track {
+  transition: all 0.3s height 0.3s;
+  transform-origin: top center;
+}
+
+.checkmark-active {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 16px;
+  color: white;
+}
+
+.table-product-image {
+  width: 60%;
+  height: 80px;
+}
+
+@media screen and (max-width: 768px) {
+  .table-product-image {
+    width: 100%;
+    height: 100px;
+  }
+}
+
+.update-button {
+  font-size: 14px;
+}

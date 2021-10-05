@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.message-link {
+  font-weight: bold;
+}
+
+.white-font {
+  color: white;
+}
+
+.is-invalid {
+  border: 1px solid #d9534f !important;
+}
+
+.footer-div {
+  position: relative;
+  margin-top: auto;
+  width: 100%;
+  background-color: #1a1a1a;
+}
+
+.dd {
+  text-decoration: none !important;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.dd:hover {
+  background: #121fcf;
+  background: -webkit-linear-gradient(to right, #121fcf 0%, #cf1512 100%);
+  background: -moz-linear-gradient(to right, #121fcf 0%, #cf1512 100%);
+  background: linear-gradient(to right, #121fcf 0%, #cf1512 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+}
+
+.linkedin-logo {
+  font-size: 22px;
+  color: #0e76a8;
+}
+
+.custom-button-border {
+  border: 1px solid #1a1a1a !important;
+}
+
+.custom-menu-link-letter-spacing button {
+  letter-spacing: 3px !important;
+}
