@@ -29,6 +29,7 @@ import { CART_CLEAR, CART_PRODUCT_RESET } from '../constants/cartConstant'
 import { saveShippingAddress } from './../actions/cartAction'
 
 const PlaceOrderPage = ({ history }) => {
+  const [stockError, setStockError] = useState(null)
   const [paymentStatus, setPaymentStatus] = useState(null)
   const [loading, setLoading] = useState(false)
   const [orderId, setOrderId] = useState(null)
@@ -104,18 +105,21 @@ const PlaceOrderPage = ({ history }) => {
       config
     )
 
-    const { status, order } = response.data
-
-    if (status) {
-      setLoading(false)
-    }
+    const { status, order, outOfStockMessage, outOfStock } = response.data
 
     if (status === 'succeeded') {
+      setLoading(false)
       setOrderId(order._id)
       setPaymentStatus(status)
-    } else {
+    }
+    if (status === 'failure') {
+      setLoading(false)
       setPaymentStatus(status)
-      alert('Something went wrong')
+    }
+
+    if (outOfStock) {
+      setLoading(false)
+      setStockError(outOfStockMessage)
     }
   }
 
@@ -215,6 +219,12 @@ const PlaceOrderPage = ({ history }) => {
                       <Message variant='danger'>
                         Payment Failed. Please Try Again
                       </Message>
+                    </ListGroup.Item>
+                  )}
+
+                  {stockError !== null && (
+                    <ListGroup.Item>
+                      <Message variant='danger'>{stockError}</Message>
                     </ListGroup.Item>
                   )}
 

@@ -88,8 +88,6 @@
 
 @media screen and (max-width: 768px) {
   .creditcard-wrapper {
-    /* min-width: 240px;
-    max-width: 240px; */
     width: 100%;
   }
 

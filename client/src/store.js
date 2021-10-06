@@ -81,6 +81,8 @@ const initialState = {
   userLogin: { userLoginInfo: userInfoFromStorage },
   cart: {
     cartItems: cartItemsFromStorage,
+  },
+  checkout: {
     shippingAddress: shippingAddressFromStorage,
   },
 }

@@ -13,34 +13,40 @@ const CheckoutSteps = ({ step1, step2, step3 }) => {
           <Nav.Item className='flex-sm-fill nav-link'>
             {step1 ? (
               <LinkContainer to='/shipping'>
-                <Nav.Link className='active-border'>1.Shipping</Nav.Link>
+                <Nav.Link className='checkoutsteps-active-border'>
+                  1.Shipping
+                </Nav.Link>
               </LinkContainer>
             ) : (
-              <Nav.Link disabled className='disabled-border'>
+              <Nav.Link disabled className='checkoutsteps-disabled-border'>
                 1.Shipping
               </Nav.Link>
             )}
           </Nav.Item>
 
           <Nav.Item className='flex-sm-fill nav-link'>
-            {step2 ? (
+            {step1 && step2 ? (
               <LinkContainer to='/paymentmethod'>
-                <Nav.Link className='active-border'>2.Payment</Nav.Link>
+                <Nav.Link className='checkoutsteps-active-border'>
+                  2.Payment
+                </Nav.Link>
               </LinkContainer>
             ) : (
-              <Nav.Link disabled className='disabled-border'>
+              <Nav.Link disabled className='checkoutsteps-disabled-border'>
                 2.Payment
               </Nav.Link>
             )}
           </Nav.Item>
 
           <Nav.Item className='flex-sm-fill nav-link'>
-            {step3 ? (
+            {step1 && step2 && step3 ? (
               <LinkContainer to='/placeorder'>
-                <Nav.Link className='active-border'>3.Order</Nav.Link>
+                <Nav.Link className='checkoutsteps-active-border'>
+                  3.Order
+                </Nav.Link>
               </LinkContainer>
             ) : (
-              <Nav.Link disabled className='disabled-border'>
+              <Nav.Link disabled className='checkoutsteps-disabled-border'>
                 3.Order
               </Nav.Link>
             )}
