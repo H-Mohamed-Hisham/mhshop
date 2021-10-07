@@ -9,13 +9,19 @@ nav {
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 1;
+  z-index: 20;
   /* My modification */
   display: flex !important;
   justify-content: space-around;
   align-items: center;
-  min-height: 8vh;
+  /* min-height: 8vh; */
+  height: 57px;
   background-color: #1a1a1a;
+}
+
+.logo-searchbox-wrapper {
+  display: flex;
+  justify-content: left;
 }
 
 .logo a {
@@ -30,7 +36,7 @@ nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 40%;
+  width: 60%;
   margin-bottom: 0px !important;
 }
 
@@ -67,7 +73,7 @@ nav {
 
 @media screen and (max-width: 1024px) {
   .nav-links {
-    width: 60%;
+    width: 80%;
   }
 }
 
@@ -81,13 +87,13 @@ nav {
     position: fixed !important;
     width: 100%;
     top: 0px;
-    z-index: 1;
+    z-index: 18;
   }
   /* My modification */
 
   .nav-links {
     position: absolute;
-    z-index: 1;
+    z-index: 20;
     right: 0px;
     /* height: 100%; */
     height: 92vh;

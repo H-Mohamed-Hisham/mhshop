@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Row, Col } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 
 // * Actions
@@ -11,6 +11,7 @@ import Loader from '../components/Loader'
 import Product from '../components/Product'
 import Paginate from '../components/Paginate'
 import Count from '../components/Count'
+import ProductCarousel from '../components/ProductCarousel'
 
 const HomePage = ({ match }) => {
   const keyword = match.params.keyword || ''
@@ -38,45 +39,50 @@ const HomePage = ({ match }) => {
 
   return (
     <>
-      <Row>
-        <Col md={12}>
-          {loadingProducts ? (
-            <Loader />
-          ) : errorProducts ? (
-            <Message>{errorProducts}</Message>
-          ) : !loadingProducts && products.length === 0 ? (
-            <Message>No Products To Display</Message>
-          ) : (
-            <Col>
-              {' '}
-              <h3 className='text-center'>Latest Products</h3>
-              <Row>
-                <Col>
-                  <Count
-                    count={count}
-                    docCount={docCount}
-                    pageSize={pageSize}
-                    length={products.length}
-                    title='Products'
-                  />
-                </Col>
-              </Row>
-              <Row>
-                {products.map((product) => (
-                  <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                    <Product product={product} />
+      <Container fluid style={{ marginTop: '58px' }} className='px-0'>
+        {!keyword && <ProductCarousel />}
+      </Container>
+      <Container>
+        <Row>
+          <Col md={12}>
+            {loadingProducts ? (
+              <Loader />
+            ) : errorProducts ? (
+              <Message>{errorProducts}</Message>
+            ) : !loadingProducts && products.length === 0 ? (
+              <Message>No Products To Display</Message>
+            ) : (
+              <Col>
+                {' '}
+                <h3 className='text-center'>Latest Products</h3>
+                <Row>
+                  <Col>
+                    <Count
+                      count={count}
+                      docCount={docCount}
+                      pageSize={pageSize}
+                      length={products.length}
+                      title='Products'
+                    />
                   </Col>
-                ))}
-              </Row>
-              <Row>
-                <Col>
-                  <Paginate pages={pages} page={page} link={link} />
-                </Col>
-              </Row>{' '}
-            </Col>
-          )}
-        </Col>
-      </Row>
+                </Row>
+                <Row>
+                  {products.map((product) => (
+                    <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                      <Product product={product} />
+                    </Col>
+                  ))}
+                </Row>
+                <Row>
+                  <Col>
+                    <Paginate pages={pages} page={page} link={link} />
+                  </Col>
+                </Row>{' '}
+              </Col>
+            )}
+          </Col>
+        </Row>
+      </Container>
     </>
   )
 }

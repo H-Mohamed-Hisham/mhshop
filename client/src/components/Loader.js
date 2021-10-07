@@ -1,7 +1,7 @@
 import React from 'react'
 import { Spinner } from 'react-bootstrap'
 
-const Loader = () => {
+const Loader = ({ className }) => {
   return (
     <Spinner
       animation='border'
@@ -10,8 +10,9 @@ const Loader = () => {
         width: '100px',
         height: '100px',
         margin: 'auto',
-        display: 'block'
+        display: 'block',
       }}
+      className={className}
     >
       <span className='sr-only'>Loading...</span>
     </Spinner>

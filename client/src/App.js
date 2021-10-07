@@ -48,9 +48,10 @@ function App() {
   return (
     <Router>
       <MenuBar />
+      <Route exact path='/' component={HomePage} />
+      <Route exact path='/search/:keyword' component={HomePage} />
       <Container style={{ marginTop: '70px' }}>
         {/* Public Pages */}
-        <Route exact path='/' component={HomePage} />
         <Route exact path='/product/:productId' component={ProductDetailPage} />
         <Route exact path='/cart' component={CartPage} />
         <Route exact path='/shipping' component={ShippingPage} />

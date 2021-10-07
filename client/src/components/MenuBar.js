@@ -10,6 +10,7 @@ import '../css/menubarstyle.css'
 
 // Components
 import TinyLoader from './TinyLoader'
+import SearchBox from './SearchBox'
 
 const MenuBar = ({ history }) => {
   const dispatch = useDispatch()
@@ -72,6 +73,10 @@ const MenuBar = ({ history }) => {
 
       <ul className='nav-links'>
         {loading && <TinyLoader />}
+
+        <li>
+          <SearchBox />
+        </li>
 
         {/* Public Access Menu */}
         {!loading && user === null && (
