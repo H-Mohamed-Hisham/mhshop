@@ -12,6 +12,8 @@ import Product from '../components/Product'
 import Paginate from '../components/Paginate'
 import Count from '../components/Count'
 import ProductCarousel from '../components/ProductCarousel'
+import Meta from '../components/Meta'
+import GoBack from '../components/GoBack'
 
 const HomePage = ({ match }) => {
   const keyword = match.params.keyword || ''
@@ -39,7 +41,12 @@ const HomePage = ({ match }) => {
 
   return (
     <>
-      <Container fluid style={{ marginTop: '58px' }} className='px-0'>
+      <Meta />
+      <Container
+        fluid
+        className='px-0 text-center'
+        style={{ marginTop: '61px' }}
+      >
         {!keyword && <ProductCarousel />}
       </Container>
       <Container>
@@ -50,11 +57,16 @@ const HomePage = ({ match }) => {
             ) : errorProducts ? (
               <Message>{errorProducts}</Message>
             ) : !loadingProducts && products.length === 0 ? (
-              <Message>No Products To Display</Message>
+              <Message className='my-4 text-center'>
+                No Products To Display
+              </Message>
             ) : (
               <Col>
                 {' '}
-                <h3 className='text-center'>Latest Products</h3>
+                <h3 className='text-center mt-2'>
+                  {keyword && <GoBack to='/' />}
+                  Latest Products
+                </h3>
                 <Row>
                   <Col>
                     <Count

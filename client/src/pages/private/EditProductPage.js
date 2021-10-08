@@ -317,7 +317,7 @@ const EditProductPage = ({ match, history }) => {
                   <Message className='my-2'>{imageUploadingError}</Message>
                 )}
                 <Form.Text className='text-muted my-2'>Image Path:</Form.Text>
-                <Form.Text className='text-muted my-2'>
+                <Form.Text className='text-muted my-2 text-break'>
                   <kbd>{`${image}`}</kbd>
                 </Form.Text>
                 <Form.Text className='text-muted my-2'>

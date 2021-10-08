@@ -3,12 +3,15 @@ import { withRouter } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 
 const SearchBox = ({ history }) => {
-  const [keyword, setKeyword] = useState('')
+  const getKeywordValue = window.location.pathname.split('/')
+  const keywordValue = getKeywordValue[2] || ''
+
+  const [keyword, setKeyword] = useState(keywordValue)
 
   const submitHandler = (e) => {
     e.preventDefault()
     if (keyword.trim()) {
-      history.push(`/search/${keyword}`)
+      history.push(`/search/${encodeURIComponent(keyword)}`)
     } else {
       history.push('/')
     }
@@ -23,6 +26,7 @@ const SearchBox = ({ history }) => {
       <Form.Control
         type='text'
         name='q'
+        value={keyword}
         onChange={(e) => setKeyword(e.target.value)}
         placeholder='Search Products...'
         className='mr-sm-2 ml-sm-5'

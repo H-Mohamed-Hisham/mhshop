@@ -21,6 +21,7 @@ import '../css/productcardstyle.css'
 import Rating from '../components/Rating'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
+import Meta from './../components/Meta'
 
 // * Actions
 import { addToCart, removeFromCart } from '../actions/cartAction'
@@ -153,6 +154,7 @@ const ProductDetailPage = ({ match }) => {
         <Message variant='danger'>{productDetailFail}</Message>
       ) : (
         <>
+          <Meta title={product.name} />
           <Row>
             <Col md={4} className='pb-3'>
               <Row className=' mb-1'>

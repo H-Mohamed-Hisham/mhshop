@@ -1,6 +1,8 @@
 body {
   margin: 0;
   overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100%;
 }
 
 .message-link {
@@ -50,3 +52,17 @@ body {
 .custom-menu-link-letter-spacing button {
   letter-spacing: 3px !important;
 }
+
+/* CUSTOM CONTAINER MARGIN TOP  */
+
+/* @media screen and (min-width: 768px) {
+  .custom-container-margin-top {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .custom-container-margin-top {
+    margin-top: 60px;
+  }
+} */

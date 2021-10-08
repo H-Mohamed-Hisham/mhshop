@@ -50,7 +50,10 @@ function App() {
       <MenuBar />
       <Route exact path='/' component={HomePage} />
       <Route exact path='/search/:keyword' component={HomePage} />
-      <Container style={{ marginTop: '70px' }}>
+      <Container
+        style={{ marginTop: '75px' }}
+        className='custom-container-margin-top'
+      >
         {/* Public Pages */}
         <Route exact path='/product/:productId' component={ProductDetailPage} />
         <Route exact path='/cart' component={CartPage} />

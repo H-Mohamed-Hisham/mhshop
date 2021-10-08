@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { DropdownButton, Dropdown } from 'react-bootstrap'
 
 import { logout } from '../actions/userAction'
 
@@ -10,7 +9,7 @@ import '../css/menubarstyle.css'
 
 // Components
 import TinyLoader from './TinyLoader'
-import SearchBox from './SearchBox'
+// import SearchBox from './SearchBox'
 
 const MenuBar = ({ history }) => {
   const dispatch = useDispatch()
@@ -18,46 +17,46 @@ const MenuBar = ({ history }) => {
   const userDetail = useSelector((state) => state.userDetail)
   const { loading, error, user } = userDetail
 
-  // Toggle Nav
-  function handleClick() {
-    const burger = document.querySelector('.burger')
-    const nav = document.querySelector('.nav-links')
-    const navLinks = document.querySelectorAll('.nav-links li')
+  function alleventListener() {
+    const navToggler = document.querySelector('.nav-toggler')
+    const navMenu = document.querySelector('.site-navbar .navbar-ul')
 
-    nav.classList.toggle('nav-active')
+    // togglerClick function
+    function togglerClick() {
+      navToggler.classList.toggle('toggler-open')
+      navMenu.classList.toggle('open')
+    }
 
-    // Animate Links
-    navLinks.forEach((link, index) => {
-      if (link.style.animation) {
-        link.style.animation = ''
-      } else {
-        link.style.animation = `navLinkFade 0.5s ease forwards ${
-          index / 7 + 0.3
-        }s`
-      }
-    })
-
-    // Burger Animation
-    burger.classList.toggle('toggle')
+    togglerClick()
   }
 
-  // Toggle Nav
-  function closeMenuOnMenuClick() {
-    const burger = document.querySelector('.burger')
-    const nav = document.querySelector('.nav-links')
-    const navLinks = document.querySelectorAll('.nav-links li')
+  // navLinkClick function
+  function navLinkClick() {
+    const navToggler = document.querySelector('.nav-toggler')
+    const navMenu = document.querySelector('.site-navbar .navbar-ul')
+    if (navMenu.classList.contains('open')) {
+      navToggler.click()
+    }
+  }
 
-    nav.classList.toggle('nav-active')
+  // Admin Menu Toggler
+  function adminMenuToggler() {
+    const isUserMenuOpen = document.querySelector('.user-menu')
+    if (isUserMenuOpen.classList.contains('user-menu-visible')) {
+      userMenuToggler()
+    }
+    const adminMenu = document.querySelector('.admin-menu')
+    adminMenu.classList.toggle('admin-menu-visible')
+  }
 
-    // Animate Links
-    navLinks.forEach((link, index) => {
-      if (link.style.animation) {
-        link.style.animation = ''
-      }
-    })
-
-    // Burger Animation
-    burger.classList.toggle('toggle')
+  // User Menu Toggler
+  function userMenuToggler() {
+    const isAdminMenuOpen = document.querySelector('.admin-menu')
+    if (isAdminMenuOpen.classList.contains('admin-menu-visible')) {
+      adminMenuToggler()
+    }
+    const userMenu = document.querySelector('.user-menu')
+    userMenu.classList.toggle('user-menu-visible')
   }
 
   const logoutHandler = () => {
@@ -66,130 +65,135 @@ const MenuBar = ({ history }) => {
   }
 
   return (
-    <nav>
-      <div className='logo'>
-        <Link to='/'>MH SHOP</Link>
-      </div>
+    <>
+      <div className='navbar-area'>
+        <div className='navbar-container'>
+          <nav className='site-navbar'>
+            <Link to='/' className='site-logo' onClick={navLinkClick}>
+              MH
+            </Link>
 
-      <ul className='nav-links'>
-        {loading && <TinyLoader />}
+            <ul className='navbar-ul'>
+              {loading && (
+                <li className='navbar-li'>
+                  <TinyLoader className='navbar-tiny-loader' />
+                </li>
+              )}
 
-        <li>
-          <SearchBox />
-        </li>
+              {/* Public Access Menu */}
+              {!loading && user === null && (
+                <>
+                  <li className='navbar-li'>
+                    <Link
+                      to='/signin'
+                      className='navbar-link'
+                      onClick={navLinkClick}
+                    >
+                      Signin
+                    </Link>
+                  </li>
+                  <li className='navbar-li'>
+                    <Link
+                      to='/signup'
+                      className='navbar-link'
+                      onClick={navLinkClick}
+                    >
+                      Signup
+                    </Link>
+                  </li>
+                </>
+              )}
 
-        {/* Public Access Menu */}
-        {!loading && user === null && (
-          <>
-            <li>
-              <Link to='/signin' onClick={closeMenuOnMenuClick}>
-                Signin
-              </Link>
-            </li>
-            <li>
-              <Link to='/signup' onClick={closeMenuOnMenuClick}>
-                Signup
-              </Link>
-            </li>
-            <li>
-              <Link to='/cart' onClick={closeMenuOnMenuClick}>
-                Cart
-              </Link>
-            </li>
-          </>
-        )}
-
-        {/* Admin Menu */}
-        {!loading && user !== null && user.role === 1 && error === null && (
-          <>
-            <li>
-              <DropdownButton
-                title='Admin'
-                className='menu-dropdown-button custom-menu-link-letter-spacing'
-              >
-                <Dropdown.Item
-                  as={Link}
-                  to='/admin/category'
-                  onClick={closeMenuOnMenuClick}
-                >
-                  Category
-                </Dropdown.Item>
-                <Dropdown.Item
-                  as={Link}
-                  to='/admin/products'
-                  onClick={closeMenuOnMenuClick}
-                >
-                  Products
-                </Dropdown.Item>
-                <Dropdown.Item
-                  as={Link}
-                  to='/admin/orders'
-                  onClick={closeMenuOnMenuClick}
-                >
-                  Orders
-                </Dropdown.Item>
-              </DropdownButton>
-            </li>
-          </>
-        )}
-
-        {/* Authorized User Menu */}
-        {!loading && user !== null && error === null && (
-          <>
-            <li>
-              <DropdownButton
-                title={user ? user.name : 'User'}
-                className='menu-dropdown-button custom-menu-link-letter-spacing'
-              >
-                <Dropdown.Item
-                  as={Link}
-                  to='/user/profile'
-                  onClick={closeMenuOnMenuClick}
-                >
-                  My Profile
-                </Dropdown.Item>
-
-                <Dropdown.Item
-                  as={Link}
-                  to='/myorders'
-                  onClick={closeMenuOnMenuClick}
-                >
-                  My Orders
-                </Dropdown.Item>
-
-                <Dropdown.Item>
+              {/* Admin Menu */}
+              {!loading && user !== null && user.role === 1 && error === null && (
+                <li className='navbar-li'>
                   <span
-                    onClick={() => {
-                      logoutHandler()
-                      closeMenuOnMenuClick()
-                    }}
+                    className='navbar-link admin-click'
+                    onClick={adminMenuToggler}
                   >
-                    Logout
+                    admin
                   </span>
-                </Dropdown.Item>
-              </DropdownButton>
-            </li>
-            <li>
-              <Link to='/cart' onClick={closeMenuOnMenuClick}>
-                Cart
-              </Link>
-            </li>
-          </>
-        )}
+                  <ul className='admin-menu'>
+                    <li className='admin-menu-link'>
+                      <Link to='/admin/category' onClick={navLinkClick}>
+                        Category
+                      </Link>
+                    </li>
+                    <li className='admin-menu-link'>
+                      <Link to='/admin/products' onClick={navLinkClick}>
+                        Products
+                      </Link>
+                    </li>
+                    <li className='admin-menu-link'>
+                      <Link to='/admin/orders' onClick={navLinkClick}>
+                        Orders
+                      </Link>
+                    </li>
+                  </ul>
+                </li>
+              )}
 
-        <li>
-          <Link to='/about' onClick={closeMenuOnMenuClick}>
-            About
-          </Link>
-        </li>
-      </ul>
+              {/* Authorized User Menu */}
+              {!loading && user !== null && error === null && (
+                <>
+                  <li className='navbar-li'>
+                    <span
+                      className='navbar-link user-click'
+                      onClick={userMenuToggler}
+                    >
+                      User
+                    </span>
+                    <ul className='user-menu'>
+                      <li className='user-menu-link'>
+                        <Link to='/user/profile' onClick={navLinkClick}>
+                          My Profile
+                        </Link>
+                      </li>
+                      <li className='user-menu-link'>
+                        <Link to='/myorders' onClick={navLinkClick}>
+                          My Orders
+                        </Link>
+                      </li>
+                      <li className='user-menu-link'>
+                        <span
+                          className='logout-span'
+                          onClick={() => {
+                            logoutHandler()
+                            navLinkClick()
+                          }}
+                        >
+                          Logout
+                        </span>
+                      </li>
+                    </ul>
+                  </li>
+                </>
+              )}
 
-      <div className='burger' onClick={handleClick}>
-        <div className='line1'></div>
-        <div className='line2'></div>
-        <div className='line3'></div>
+              <li className='navbar-li'>
+                <Link to='/cart' className='navbar-link' onClick={navLinkClick}>
+                  Cart
+                </Link>
+              </li>
+
+              <li className='navbar-li'>
+                <Link
+                  to='/about'
+                  className='navbar-link'
+                  onClick={navLinkClick}
+                >
+                  About
+                </Link>
+              </li>
+            </ul>
+
+            <button className='nav-toggler' onClick={alleventListener}>
+              <span></span>
+            </button>
+          </nav>
+        </div>
       </div>
-    </nav>
+    </>
   )
 }
 

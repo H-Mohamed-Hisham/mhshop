@@ -9,7 +9,7 @@ const TinyLoader = () => {
       style={{
         width: '40px',
         height: '40px',
-        margin: 'auto',
+        margin: '10px',
         display: 'block',
       }}
     >
