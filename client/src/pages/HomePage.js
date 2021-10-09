@@ -42,14 +42,8 @@ const HomePage = ({ match }) => {
   return (
     <>
       <Meta />
-      <Container
-        fluid
-        className='px-0 text-center'
-        style={{ marginTop: '61px' }}
-      >
-        {!keyword && <ProductCarousel />}
-      </Container>
-      <Container>
+      {!keyword && <ProductCarousel />}
+      <Container fluid>
         <Row>
           <Col md={12}>
             {loadingProducts ? (

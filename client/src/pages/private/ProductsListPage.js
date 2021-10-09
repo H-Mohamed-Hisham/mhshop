@@ -119,7 +119,7 @@ const ListProductsPage = ({ match, history }) => {
 
   return (
     <>
-      <Row className='align-items-center'>
+      <Row className='align-items-center py-3'>
         <Col>
           <h3>Products</h3>
         </Col>

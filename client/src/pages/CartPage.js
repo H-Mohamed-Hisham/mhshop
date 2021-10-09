@@ -102,7 +102,7 @@ const CartPage = ({ history }) => {
 
   return (
     <>
-      <Row>
+      <Row className='py-3'>
         <Col className='my-2 text-center'>
           <h3>My Shopping Cart</h3>
           <hr />

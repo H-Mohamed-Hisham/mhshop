@@ -149,13 +149,15 @@ const ProductDetailPage = ({ match }) => {
   return (
     <>
       {productDetailLoading ? (
-        <Loader />
+        <Loader className='py-3' />
       ) : productDetailFail ? (
-        <Message variant='danger'>{productDetailFail}</Message>
+        <Message variant='danger' className='py-3'>
+          {productDetailFail}
+        </Message>
       ) : (
         <>
           <Meta title={product.name} />
-          <Row>
+          <Row className='py-3'>
             <Col md={4} className='pb-3'>
               <Row className=' mb-1'>
                 <Col md={12}>

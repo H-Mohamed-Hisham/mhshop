@@ -328,7 +328,7 @@ const OrderDetailPage = ({ match }) => {
   }, [orderId])
 
   return (
-    <Row>
+    <Row className='py-3'>
       {loading ? (
         <Col md={12}>
           <Loader />

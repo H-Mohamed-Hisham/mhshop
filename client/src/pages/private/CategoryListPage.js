@@ -92,7 +92,7 @@ const CategoryListPage = () => {
 
   return (
     <>
-      <Row className='pb-3'>
+      <Row className='py-3'>
         {userLoading && <Loader />}
         {userError !== null ||
           (user !== null && (

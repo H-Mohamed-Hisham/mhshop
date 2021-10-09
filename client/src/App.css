@@ -1,8 +1,11 @@
-body {
+/* body {
   margin: 0;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  height: 100%;
+  overflow: hidden;
+} */
+
+main {
+  min-height: 80vh;
+  margin-top: 84px;
 }
 
 .message-link {
@@ -48,21 +51,3 @@ body {
 .custom-button-border {
   border: 1px solid #1a1a1a !important;
 }
-
-.custom-menu-link-letter-spacing button {
-  letter-spacing: 3px !important;
-}
-
-/* CUSTOM CONTAINER MARGIN TOP  */
-
-/* @media screen and (min-width: 768px) {
-  .custom-container-margin-top {
-    margin-top: 20px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .custom-container-margin-top {
-    margin-top: 60px;
-  }
-} */

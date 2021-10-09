@@ -6,7 +6,7 @@ import '../css/aboutstyle.css'
 
 const AboutPage = () => {
   return (
-    <Row>
+    <Row className='py-3'>
       <Col xs={12} md={12} className='py-3 d-flex justify-content-center '>
         <p className='text-uppercase text-center'>About this application</p>
       </Col>
@@ -50,11 +50,7 @@ const AboutPage = () => {
               <li>This web application is not a real world ecommerce site.</li>
               <li>
                 The payment methods are in <i className='fab fa-cc-stripe'></i>{' '}
-                test mode. So, the application won't capture real amount from
-                users.
-              </li>
-              <li className='text-warning'>
-                Note: Please don't provide your card details.
+                test mode. Application won't capture real amount from users.
               </li>
               <li>
                 For testing purpose please use the below card details for

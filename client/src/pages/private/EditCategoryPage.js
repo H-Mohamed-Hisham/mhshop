@@ -116,14 +116,14 @@ const EditCategoryPage = ({ match }) => {
   return (
     <>
       {loading && (
-        <Row className='pb-3'>
+        <Row className='py-3'>
           <Col>
             {' '}
             <Loader />
           </Col>
         </Row>
       )}
-      <Row className='pb-3'>
+      <Row className='py-3 '>
         {userError === null && error && (
           <Col md={12}>
             <FormContainer>

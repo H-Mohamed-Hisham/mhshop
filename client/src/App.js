@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
 // Components
-import MenuBar from './components/MenuBar'
+import Header from './components/Header'
 
 // About Page
 import AboutPage from './pages/AboutPage'
@@ -47,55 +47,58 @@ import OrderDetailPage from './pages/private/OrderDetailPage'
 function App() {
   return (
     <Router>
-      <MenuBar />
-      <Route exact path='/' component={HomePage} />
-      <Route exact path='/search/:keyword' component={HomePage} />
-      <Container
-        style={{ marginTop: '75px' }}
-        className='custom-container-margin-top'
-      >
-        {/* Public Pages */}
-        <Route exact path='/product/:productId' component={ProductDetailPage} />
-        <Route exact path='/cart' component={CartPage} />
-        <Route exact path='/shipping' component={ShippingPage} />
-        <Route exact path='/paymentmethod' component={PaymentMethodPage} />
-        <Route exact path='/placeorder' component={PlaceOrderPage} />
-        <Route exact path='/about' component={AboutPage} />
+      <Header />
+      <main>
+        <Route exact path='/' component={HomePage} />
+        <Route exact path='/search/:keyword' component={HomePage} />
+        <Container>
+          {/* Public Pages */}
+          <Route
+            exact
+            path='/product/:productId'
+            component={ProductDetailPage}
+          />
+          <Route exact path='/cart' component={CartPage} />
+          <Route exact path='/shipping' component={ShippingPage} />
+          <Route exact path='/paymentmethod' component={PaymentMethodPage} />
+          <Route exact path='/placeorder' component={PlaceOrderPage} />
+          <Route exact path='/about' component={AboutPage} />
 
-        {/* Authentication Pages */}
-        <Route exact path='/signin' component={SiginPage} />
-        <Route exact path='/signup' component={SignupPage} />
-        <Route exact path='/forgot-password' component={ForgotPasswordPage} />
+          {/* Authentication Pages */}
+          <Route exact path='/signin' component={SiginPage} />
+          <Route exact path='/signup' component={SignupPage} />
+          <Route exact path='/forgot-password' component={ForgotPasswordPage} />
 
-        {/* Authorized User Pages */}
-        <Route exact path='/user/profile' component={ProfilePage} />
-        <Route exact path='/user/profile/edit' component={EditProfilePage} />
-        <Route
-          exact
-          path='/user/password/edit'
-          component={ChangePasswordPage}
-        />
-        <Route exact path='/myorders' component={MyOrderListPage} />
-        <Route exact path='/myorder/:id' component={MyOrderDetailPage} />
+          {/* Authorized User Pages */}
+          <Route exact path='/user/profile' component={ProfilePage} />
+          <Route exact path='/user/profile/edit' component={EditProfilePage} />
+          <Route
+            exact
+            path='/user/password/edit'
+            component={ChangePasswordPage}
+          />
+          <Route exact path='/myorders' component={MyOrderListPage} />
+          <Route exact path='/myorder/:id' component={MyOrderDetailPage} />
 
-        {/* Admin Pages */}
-        <Route exact path='/admin/products' component={ProductsListPage} />
-        <Route
-          exact
-          path='/admin/product/edit/:productId'
-          component={EditProductPage}
-        />
+          {/* Admin Pages */}
+          <Route exact path='/admin/products' component={ProductsListPage} />
+          <Route
+            exact
+            path='/admin/product/edit/:productId'
+            component={EditProductPage}
+          />
 
-        <Route exact path='/admin/category' component={CategoryListPage} />
-        <Route
-          exact
-          path='/admin/category/edit/:id'
-          component={EditCategoryPage}
-        />
+          <Route exact path='/admin/category' component={CategoryListPage} />
+          <Route
+            exact
+            path='/admin/category/edit/:id'
+            component={EditCategoryPage}
+          />
 
-        <Route exact path='/admin/orders' component={OrderListPage} />
-        <Route exact path='/admin/order/:id' component={OrderDetailPage} />
-      </Container>
+          <Route exact path='/admin/orders' component={OrderListPage} />
+          <Route exact path='/admin/order/:id' component={OrderDetailPage} />
+        </Container>
+      </main>
     </Router>
   )
 }

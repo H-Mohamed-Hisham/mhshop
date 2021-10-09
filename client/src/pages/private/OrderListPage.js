@@ -24,7 +24,7 @@ const OrderListPage = () => {
   }, [dispatch])
 
   return (
-    <Row>
+    <Row className='py-3'>
       <Col>
         <h3>Orders</h3>
         {loading ? (
